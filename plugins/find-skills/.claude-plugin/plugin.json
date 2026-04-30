@@ -1,5 +1,5 @@
 {
-  "name": "cc-booster-find-skills",
+  "name": "skill-finder",
   "description": "Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.",
   "author": {
     "name": "fenish",
