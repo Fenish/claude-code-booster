@@ -1,0 +1,8 @@
+{
+  "name": "reverse-engineer",
+  "description": "General-purpose reverse engineering toolkit. Decompiles, disassembles, and maps binaries, scripts, and applications across all languages.",
+  "author": {
+    "name": "fenish",
+    "url": "https://github.com/fenish"
+  }
+}

@@ -36,6 +36,16 @@
       "category": "security",
       "source": "./plugins/penetration-tester",
       "homepage": "https://github.com/Fenish/claude-code-booster"
+    },
+    {
+      "name": "reverse-engineer",
+      "description": "General-purpose reverse engineering toolkit. Decompiles, disassembles, and maps binaries, scripts, and applications across all languages.",
+      "author": {
+        "name": "fenish"
+      },
+      "category": "security",
+      "source": "./plugins/reverse-engineer",
+      "homepage": "https://github.com/Fenish/claude-code-booster"
     }
   ]
 }
