@@ -1,3 +1,4 @@
+import json
 import re
 
 import registry
@@ -28,20 +29,29 @@ CATEGORIES = {
 MAX_PER_CATEGORY = 50
 
 
-def extract(filepath, target):
-    check = registry.require("strings")
-    if check:
-        return check
-
+def _extract_gnu_strings(filepath):
     stdout, stderr, rc = base.run_tool(
         ["strings", "-n", "6", str(filepath)], timeout=60
     )
     if rc != 0:
-        return {"error": f"strings failed: {stderr.strip()[:200]}"}
+        return None, f"strings failed: {stderr.strip()[:200]}"
+    return stdout.strip().splitlines(), None
 
-    all_strings = stdout.strip().splitlines()
-    total = len(all_strings)
 
+def _extract_rizin_strings(filepath):
+    stdout, stderr, rc = base.run_tool(
+        ["rizin", "-q", "-c", "izj", str(filepath)], timeout=120
+    )
+    if rc != 0:
+        return None, f"rizin izj failed: {stderr.strip()[:200]}"
+    try:
+        entries = json.loads(base.clean_json(stdout))
+    except (json.JSONDecodeError, ValueError) as e:
+        return None, f"rizin izj parse error: {e}"
+    return [e.get("string", "") for e in entries if e.get("string")], None
+
+
+def _categorize(all_strings):
     cats = {k: [] for k in CATEGORIES}
     for s in all_strings:
         for cat, pat in CATEGORIES.items():
@@ -49,8 +59,28 @@ def extract(filepath, target):
                 continue
             if pat.search(s):
                 cats[cat].append(s.strip())
+    return {k: v for k, v in cats.items() if v}
 
-    cats = {k: v for k, v in cats.items() if v}
+
+def extract(filepath, target):
+    all_strings = None
+    error = None
+
+    if registry.is_available("strings"):
+        all_strings, error = _extract_gnu_strings(filepath)
+
+    if all_strings is None and registry.is_available("rizin"):
+        all_strings, error = _extract_rizin_strings(filepath)
+
+    if all_strings is None:
+        if error:
+            return {"error": error}
+        return {
+            "error": "no string extraction tool available (install rizin or strings)"
+        }
+
+    total = len(all_strings)
+    cats = _categorize(all_strings)
 
     strings_data = {"total": total, "categories": cats}
     storage.update_section(target, "strings", strings_data)

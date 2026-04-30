@@ -37,6 +37,26 @@ def _human_size(size):
     return f"{size:.1f} TB"
 
 
+def _file_description(filepath, detected):
+    try:
+        result = subprocess.run(
+            ["file", str(filepath)], capture_output=True, text=True, timeout=10
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        pass
+    parts = [str(filepath.name) + ":"]
+    parts.append(f"{detected['type']} executable")
+    if detected["arch"] != "Unknown":
+        parts.append(f"for {detected['arch']}")
+    if detected["packing"]:
+        parts.append(f"(packed: {detected['packing']})")
+    if detected["framework"]:
+        parts.append(f"[{detected['framework']}]")
+    return " ".join(parts)
+
+
 def _detect_type(header, filepath):
     ext = filepath.suffix.lower()
     result = {"type": "Unknown", "arch": "Unknown", "packing": None, "framework": None}
@@ -166,14 +186,7 @@ def run(filepath):
 
     detected = _detect_type(header, filepath)
 
-    file_output = "unavailable"
-    try:
-        result = subprocess.run(
-            ["file", str(filepath)], capture_output=True, text=True, timeout=10
-        )
-        file_output = result.stdout.strip()
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        pass
+    file_output = _file_description(filepath, detected)
 
     tools = registry.suggest_tools(detected["type"])
     available = [t for t in tools if registry.is_available(t)]

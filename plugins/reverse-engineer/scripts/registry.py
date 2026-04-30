@@ -1,3 +1,4 @@
+import platform
 import shutil
 
 TOOL_DB = {
@@ -13,6 +14,7 @@ TOOL_DB = {
         "install": {
             "apt": "sudo apt install binutils",
             "brew": "brew install binutils",
+            "choco": "choco install binutils",
         },
         "url": "bundled with binutils",
     },
@@ -20,6 +22,7 @@ TOOL_DB = {
         "install": {
             "apt": "sudo apt install binutils",
             "brew": "brew install binutils",
+            "choco": "choco install binutils",
         },
         "url": "bundled with binutils",
     },
@@ -27,6 +30,7 @@ TOOL_DB = {
         "install": {
             "apt": "sudo apt install binutils",
             "brew": "brew install binutils",
+            "choco": "choco install binutils",
         },
         "url": "bundled with binutils",
     },
@@ -43,7 +47,11 @@ TOOL_DB = {
         "url": "https://github.com/icsharpcode/ILSpy",
     },
     "monodis": {
-        "install": {"apt": "sudo apt install mono-utils", "brew": "brew install mono"},
+        "install": {
+            "apt": "sudo apt install mono-utils",
+            "brew": "brew install mono",
+            "choco": "choco install mono",
+        },
         "url": "https://www.mono-project.com",
     },
     "jadx": {
@@ -88,7 +96,11 @@ TOOL_DB = {
     "dumpbin": {"install": {}, "url": "bundled with Visual Studio"},
     "otool": {"install": {}, "url": "bundled with Xcode"},
     "wasm-decompile": {
-        "install": {"apt": "sudo apt install wabt", "brew": "brew install wabt"},
+        "install": {
+            "apt": "sudo apt install wabt",
+            "brew": "brew install wabt",
+            "choco": "choco install wabt",
+        },
         "url": "https://github.com/WebAssembly/wabt",
     },
 }
@@ -122,13 +134,26 @@ def suggest_tools(file_type):
     return TYPE_TOOLS.get(file_type, ["strings", "rizin"])
 
 
+def _preferred_manager():
+    system = platform.system()
+    if system == "Windows":
+        return "choco"
+    elif system == "Darwin":
+        return "brew"
+    return "apt"
+
+
 def install_hint(tool):
     info = TOOL_DB.get(tool, {})
     installs = info.get("install", {})
     if installs:
-        first = next(iter(installs.values()))
-        if first:
-            return first
+        preferred = _preferred_manager()
+        if preferred in installs:
+            return installs[preferred]
+        for mgr in ("pip", "npm", "dotnet"):
+            if mgr in installs:
+                return installs[mgr]
+        return next(iter(installs.values()))
     return info.get("url", "manual install")
 
 

@@ -37,7 +37,8 @@ only what you need — never read the JSON file directly.
 Python runs CLI tools, parses output, stores to JSON, returns a one-line
 summary. Claude never sees raw tool output — only counts and summaries.
 
-- `extract-strings <file> <target>` — runs `strings`, categorizes, stores
+- `extract-strings <file> <target>` — uses `strings` or `rizin izj` as fallback,
+  categorizes, stores
 - `extract-headers <file> <target>` — runs `rizin iSj/iIj`, stores sections +
   info
 - `extract-imports <file> <target>` — runs `rizin iij`, stores grouped by DLL

@@ -18,7 +18,7 @@ def extract(filepath, target):
 
     sections = []
     try:
-        raw = json.loads(stdout)
+        raw = json.loads(base.clean_json(stdout))
         for s in raw:
             sections.append(
                 {

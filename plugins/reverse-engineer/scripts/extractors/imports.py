@@ -18,7 +18,7 @@ def extract(filepath, target):
 
     imports = []
     try:
-        raw = json.loads(stdout)
+        raw = json.loads(base.clean_json(stdout))
         dll_map = {}
         for entry in raw:
             lib = entry.get("lib", "unknown")

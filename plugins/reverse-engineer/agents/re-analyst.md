@@ -31,33 +31,34 @@ JSON-based storage at `.claude/re-maps/<target>.json`. Use `re_map.py` for all
 operations — never read/write map files directly.
 
 ```bash
-MAP="python ${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py"
+# Use the re_map.py script via python (cross-platform)
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" <command> [args]
 
 # Full analysis — runs all extractors, stores to JSON, returns summary
-$MAP analyze <filepath> --target <name>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" analyze <filepath> --target <name>
 
 # Individual extractors (Python calls CLI tools, stores results)
-$MAP extract-strings <filepath> <target>
-$MAP extract-headers <filepath> <target>
-$MAP extract-imports <filepath> <target>
-$MAP extract-exports <filepath> <target>
-$MAP extract-functions <filepath> <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" extract-strings <filepath> <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" extract-headers <filepath> <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" extract-imports <filepath> <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" extract-exports <filepath> <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" extract-functions <filepath> <target>
 
 # Query stored data (paginated, filtered)
-$MAP query <target> <section>
-$MAP query <target> <section> --filter <text>
-$MAP query <target> <section> --limit 50 --offset 100
-$MAP query <target> <section> --count
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" query <target> <section>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" query <target> <section> --filter <text>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" query <target> <section> --limit 50 --offset 100
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" query <target> <section> --count
 
 # Other
-$MAP triage <filepath>          # quick identification
-$MAP summary <target>           # meta + section counts
-$MAP search <target> <query>    # search across all sections
-$MAP list                       # all maps
-$MAP tools                      # installed vs missing tools
-$MAP set <target> <section> "content"
-$MAP append <target> <section> "content"
-$MAP delete <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" triage <filepath>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" summary <target>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" search <target> <query>
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" list
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" tools
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" set <target> <section> "content"
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" append <target> <section> "content"
+python "${CLAUDE_PLUGIN_ROOT}/scripts/re_map.py" delete <target>
 ```
 
 Sections: `headers`, `imports`, `exports`, `strings`, `functions`, `structures`,
