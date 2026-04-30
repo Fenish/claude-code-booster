@@ -1,0 +1,31 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-code-booster",
+  "description": "Curated plugins and skills to boost Claude Code productivity — skill discovery, security testing, and more",
+  "owner": {
+    "name": "fenish",
+    "email": "git@fenish.dev"
+  },
+  "plugins": [
+    {
+      "name": "find-skills",
+      "description": "Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.",
+      "author": {
+        "name": "fenish"
+      },
+      "category": "productivity",
+      "source": "./plugins/find-skills",
+      "homepage": "https://github.com/Fenish/claude-code-booster"
+    },
+    {
+      "name": "linter",
+      "description": "Auto-formats files after every edit using the right linter for each language.",
+      "author": {
+        "name": "fenish"
+      },
+      "category": "productivity",
+      "source": "./plugins/linter",
+      "homepage": "https://github.com/Fenish/claude-code-booster"
+    }
+  ]
+}

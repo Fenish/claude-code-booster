@@ -1,0 +1,8 @@
+{
+  "name": "find-skills",
+  "description": "Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.",
+  "author": {
+    "name": "fenish",
+    "url": "https://github.com/fenish"
+  }
+}

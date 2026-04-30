@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D0D1A"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0D0D1A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="50%" style="stop-color:#A78BFA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A78BFA"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="orb1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#A78BFA;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" rx="16" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.04" stroke="#A78BFA" stroke-width="0.5">
+    <line x1="0" y1="40" x2="800" y2="40"/>
+    <line x1="0" y1="80" x2="800" y2="80"/>
+    <line x1="0" y1="120" x2="800" y2="120"/>
+    <line x1="0" y1="160" x2="800" y2="160"/>
+    <line x1="100" y1="0" x2="100" y2="200"/>
+    <line x1="200" y1="0" x2="200" y2="200"/>
+    <line x1="300" y1="0" x2="300" y2="200"/>
+    <line x1="400" y1="0" x2="400" y2="200"/>
+    <line x1="500" y1="0" x2="500" y2="200"/>
+    <line x1="600" y1="0" x2="600" y2="200"/>
+    <line x1="700" y1="0" x2="700" y2="200"/>
+  </g>
+
+  <!-- Ambient orbs -->
+  <circle cx="120" cy="100" r="120" fill="url(#orb1)"/>
+  <circle cx="680" cy="80" r="100" fill="url(#orb2)"/>
+
+  <!-- Decorative dots -->
+  <g opacity="0.3">
+    <circle cx="60" cy="40" r="1.5" fill="#7C3AED"/>
+    <circle cx="140" cy="30" r="1" fill="#A78BFA"/>
+    <circle cx="680" cy="160" r="1.5" fill="#7C3AED"/>
+    <circle cx="740" cy="40" r="1" fill="#A78BFA"/>
+    <circle cx="200" cy="170" r="1" fill="#7C3AED"/>
+    <circle cx="600" cy="30" r="1.5" fill="#A78BFA"/>
+  </g>
+
+  <!-- Lightning bolt icon -->
+  <g transform="translate(295, 30)" filter="url(#glow)">
+    <path d="M18 2L6 18h12l-2 14L28 16H16l2-14z" fill="url(#bolt)" opacity="0.9"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="85" text-anchor="middle" font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="42" font-weight="800" letter-spacing="-1">
+    <tspan fill="#FFFFFF">Claude Code </tspan><tspan fill="url(#accent)" filter="url(#glow)">Booster</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="400" y="115" text-anchor="middle" font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="14" fill="#8B8FA3" letter-spacing="3" font-weight="400">
+    PLUGIN MARKETPLACE
+  </text>
+
+  <!-- Feature pills -->
+  <g transform="translate(400, 150)" text-anchor="middle" font-family="'SF Mono', 'Cascadia Code', monospace" font-size="11">
+    <g transform="translate(-180, 0)">
+      <rect x="-40" y="-12" width="80" height="24" rx="12" fill="#7C3AED" opacity="0.15"/>
+      <text y="4" fill="#A78BFA" text-anchor="middle">plugins</text>
+    </g>
+    <g transform="translate(-60, 0)">
+      <rect x="-32" y="-12" width="64" height="24" rx="12" fill="#7C3AED" opacity="0.15"/>
+      <text y="4" fill="#A78BFA" text-anchor="middle">skills</text>
+    </g>
+    <g transform="translate(60, 0)">
+      <rect x="-32" y="-12" width="64" height="24" rx="12" fill="#7C3AED" opacity="0.15"/>
+      <text y="4" fill="#A78BFA" text-anchor="middle">hooks</text>
+    </g>
+    <g transform="translate(180, 0)">
+      <rect x="-36" y="-12" width="72" height="24" rx="12" fill="#7C3AED" opacity="0.15"/>
+      <text y="4" fill="#A78BFA" text-anchor="middle">agents</text>
+    </g>
+  </g>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="192" width="800" height="8" rx="0" fill="url(#accent)" opacity="0.6"/>
+  <rect x="0" y="192" width="800" height="2" fill="url(#accent)" opacity="0.9"/>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "description": "Auto-linting after file edits",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ${CLAUDE_PLUGIN_ROOT}/linter/auto_lint.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
