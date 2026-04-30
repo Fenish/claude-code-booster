@@ -45,9 +45,9 @@ def build_toc(categories: dict[str, list[dict]]) -> str:
     lines = []
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
-        icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="14" height="14" />'
+        icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="14" height="14" align="absmiddle" />'
         count = len(categories[cat_key])
-        lines.append(f"{icon} [{label}](#{cat_key}) ({count})<br>")
+        lines.append(f'<a href="#{cat_key}">{icon} {label}</a> ({count})<br>')
     return "\n".join(lines)
 
 
@@ -55,8 +55,8 @@ def build_plugins(categories: dict[str, list[dict]]) -> str:
     lines = []
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
-        icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="16" height="16" />'
-        lines.append(f"### {icon} {label}")
+        icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="16" height="16" align="absmiddle" />'
+        lines.append(f'<h3 id="{cat_key}">{icon} {label}</h3>')
         lines.append("")
         for p in categories[cat_key]:
             lines.append(f"- **[{p['name']}]({p['path']})** — {p['description']}")
