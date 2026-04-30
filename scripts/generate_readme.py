@@ -56,7 +56,7 @@ def build_toc(categories: dict[str, list[dict]]) -> str:
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
         badge = icon_badge(cat_key, label)
         parts.append(f"[{badge}](#{cat_key})")
-    return " ".join(parts)
+    return "<br>\n".join(parts)
 
 
 def build_plugins(categories: dict[str, list[dict]]) -> str:
