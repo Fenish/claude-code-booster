@@ -24,6 +24,10 @@ Just ask naturally:
 
 ## Important
 
+> _This is an educational and research tool. Use at your own risk. Only use on
+> systems you own or have explicit written authorization to test. Unauthorized
+> access to computer systems is illegal._
+
 - Always have explicit authorization before testing any system
 - Define the scope clearly to avoid unintended consequences
 - Use exploitation techniques carefully to demonstrate flaws without causing
