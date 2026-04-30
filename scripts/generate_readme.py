@@ -26,15 +26,25 @@ CATEGORY_LABELS = {
     "utilities": "Utilities",
 }
 
+CATEGORY_COLORS = {
+    "productivity": "7C3AED",
+    "security": "DC2626",
+    "testing": "0EA5E9",
+    "devops": "F59E0B",
+    "utilities": "10B981",
+}
 
-def icon_badge(cat_key: str, label: str) -> str:
+
+def icon_badge(cat_key: str, label: str, count: int = 0) -> str:
+    color = CATEGORY_COLORS.get(cat_key, "7C3AED")
     svg_path = ICONS_DIR / f"{cat_key}.svg"
+    text = f"{label} ({count})" if count else label
     if not svg_path.exists():
-        return f"![{label}](https://img.shields.io/badge/-{quote(label)}-7C3AED?style=flat-square)"
+        return f"![{text}](https://img.shields.io/badge/-{quote(text)}-{color}?style=flat-square)"
     svg = svg_path.read_text(encoding="utf-8").strip()
     svg = svg.replace('stroke="#7C3AED"', 'stroke="white"')
     b64 = base64.b64encode(svg.encode()).decode()
-    return f"![{label}](https://img.shields.io/badge/{quote(label)}-7C3AED?style=flat-square&logo=data:image/svg%2bxml;base64,{b64}&logoColor=white)"
+    return f"![{text}](https://img.shields.io/badge/{quote(text)}-{color}?style=flat-square&logo=data:image/svg%2bxml;base64,{b64}&logoColor=white)"
 
 
 def scan_plugin(source_dir: Path, category: str, source_rel: str) -> dict | None:
@@ -54,9 +64,10 @@ def build_toc(categories: dict[str, list[dict]]) -> str:
     parts = []
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
-        badge = icon_badge(cat_key, label)
+        count = len(categories[cat_key])
+        badge = icon_badge(cat_key, label, count)
         parts.append(f"[{badge}](#{cat_key})")
-    return "<br>\n".join(parts)
+    return " ".join(parts)
 
 
 def build_plugins(categories: dict[str, list[dict]]) -> str:
