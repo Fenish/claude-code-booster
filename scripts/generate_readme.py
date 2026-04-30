@@ -96,12 +96,24 @@ def main():
     categories = defaultdict(list)
 
     for entry in marketplace.get("plugins", []):
-        source = ROOT / entry["source"]
+        source = entry["source"]
         category = entry.get("category", "utilities")
-        source_rel = entry["source"]
-        info = scan_plugin(source, category, source_rel)
-        if info:
-            categories[category].append(info)
+
+        if source.startswith("github:") or source.startswith("http"):
+            categories[category].append(
+                {
+                    "name": entry["name"],
+                    "description": entry.get("description", ""),
+                    "category": category,
+                    "path": entry.get("homepage", source),
+                }
+            )
+        else:
+            source_dir = ROOT / source
+            source_rel = source
+            info = scan_plugin(source_dir, category, source_rel)
+            if info:
+                categories[category].append(info)
 
     toc = build_toc(categories)
     plugins = build_plugins(categories)
