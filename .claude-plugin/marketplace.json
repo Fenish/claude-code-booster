@@ -8,13 +8,13 @@
   },
   "plugins": [
     {
-      "name": "find-skills",
+      "name": "skill-finder",
       "description": "Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.",
       "author": {
         "name": "fenish"
       },
       "category": "productivity",
-      "source": "./plugins/find-skills",
+      "source": "./plugins/skill-finder",
       "homepage": "https://github.com/Fenish/claude-code-booster"
     },
     {

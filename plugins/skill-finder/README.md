@@ -1,13 +1,14 @@
-# find-skills
+# skill-finder
 
 Part of [cc-booster](https://github.com/Fenish/claude-code-booster) by fenish.
 
-A Claude Code plugin for discovering and installing agent skills from multiple registries.
+A Claude Code plugin for discovering and installing agent skills from multiple
+registries.
 
 ## Features
 
 - Searches both skills.sh and skillfish in parallel
-- Slash command (`/find-skills`) for quick searches
+- Slash command (`/skill-finder`) for quick searches
 - Skill scout agent for project-aware recommendations
 - No dependencies — uses `npx skills` and `npx skillfish` CLIs directly
 
@@ -16,8 +17,8 @@ A Claude Code plugin for discovering and installing agent skills from multiple r
 ### Slash Command
 
 ```sh
-/find-skills react testing
-/find-skills deployment ci-cd
+/skill-finder react testing
+/skill-finder deployment ci-cd
 ```
 
 ### Skill (Auto-triggers)
@@ -37,7 +38,7 @@ Ask for a project scan:
 
 ## Registries
 
-| Registry  | CLI                                    | Browse                    |
-|-----------|----------------------------------------|---------------------------|
-| skills.sh | `npx skills find <query>`              | <https://skills.sh/>      |
-| skillfish | `npx skillfish search <query> --json`  | <https://www.skill.fish/> |
+| Registry  | CLI                                   | Browse                    |
+| --------- | ------------------------------------- | ------------------------- |
+| skills.sh | `npx skills find <query>`             | <https://skills.sh/>      |
+| skillfish | `npx skillfish search <query> --json` | <https://www.skill.fish/> |
