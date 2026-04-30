@@ -99,13 +99,16 @@ def main():
         source = entry["source"]
         category = entry.get("category", "utilities")
 
-        if source.startswith("github:") or source.startswith("http"):
+        if isinstance(source, dict) or (
+            isinstance(source, str)
+            and (source.startswith("github:") or source.startswith("http"))
+        ):
             categories[category].append(
                 {
                     "name": entry["name"],
                     "description": entry.get("description", ""),
                     "category": category,
-                    "path": entry.get("homepage", source),
+                    "path": entry.get("homepage", ""),
                 }
             )
         else:

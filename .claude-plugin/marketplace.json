@@ -54,7 +54,10 @@
         "name": "KingGyuSuh"
       },
       "category": "productivity",
-      "source": "https://github.com/KingGyuSuh/codex-image-in-cc",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/KingGyuSuh/codex-image-in-cc.git"
+      },
       "homepage": "https://github.com/KingGyuSuh/codex-image-in-cc"
     }
   ]
