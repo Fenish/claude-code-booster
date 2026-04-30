@@ -1,0 +1,3 @@
+#!/bin/sh
+python scripts/generate_readme.py 2>/dev/null || python3 scripts/generate_readme.py 2>/dev/null
+git add README.md
