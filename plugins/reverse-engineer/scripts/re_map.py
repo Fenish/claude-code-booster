@@ -562,48 +562,24 @@ def _detect_type(header: bytes, filepath: Path) -> dict:
     return result
 
 
-def _extract_strings_python(filepath: Path, min_len: int = 6) -> list:
-    """Pure Python fallback for extracting printable ASCII strings from a binary."""
-    strings = []
-    current = []
-    with open(str(filepath), "rb") as f:
-        while True:
-            chunk = f.read(65536)
-            if not chunk:
-                break
-            for byte in chunk:
-                if 0x20 <= byte <= 0x7E:
-                    current.append(chr(byte))
-                else:
-                    if len(current) >= min_len:
-                        strings.append("".join(current))
-                    current = []
-    if len(current) >= min_len:
-        strings.append("".join(current))
-    return strings
-
-
 def _extract_strings(filepath: Path) -> dict:
     result = {"string_count": 0, "interesting_strings": [], "categories": {}}
 
-    all_strings = None
-    if tool_available("strings"):
-        try:
-            proc = subprocess.run(
-                ["strings", "-n", "6", str(filepath)],
-                capture_output=True,
-                text=True,
-                timeout=30,
-            )
-            all_strings = proc.stdout.strip().splitlines()
-        except (FileNotFoundError, subprocess.TimeoutExpired):
-            pass
+    if not tool_available("strings"):
+        result["error"] = "strings not installed"
+        return result
 
-    if all_strings is None:
-        try:
-            all_strings = _extract_strings_python(filepath)
-        except Exception:
-            return result
+    try:
+        proc = subprocess.run(
+            ["strings", "-n", "6", str(filepath)],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        all_strings = proc.stdout.strip().splitlines()
+    except subprocess.TimeoutExpired:
+        result["error"] = "strings timed out"
+        return result
 
     result["string_count"] = len(all_strings)
 

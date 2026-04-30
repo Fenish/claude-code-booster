@@ -1,10 +1,10 @@
 ---
 name: re-analyst
 description:
-   Deep reverse engineering analyst. Use when the target requires multi-step
-   analysis — triage, unpacking, decompilation, structure mapping, pattern
-   extraction, exploit development, tool building, and memory analysis across
-   any binary, game, application, or script.
+ Deep reverse engineering analyst. Use when the target requires multi-step
+ analysis — triage, unpacking, decompilation, structure mapping, pattern
+ extraction, exploit development, tool building, and memory analysis across any
+ binary, game, application, or script.
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 
@@ -58,8 +58,9 @@ Sections: `modules`, `structures`, `entities`, `functions`, `patterns`,
 2. **Triage** — `triage <filepath>` to detect type, arch, magic bytes, available
    tools.
 3. **Init map** — create the map with detected type and arch.
-4. **Tool check** — if a needed tool is missing, ask the user once if they want
-   to install it. If they decline, use alternatives.
+4. **Tool check** — if a needed tool is missing, prompt the user with the
+   install command and wait for confirmation. Do not use fallbacks or skip tools
+   silently — proper CLI tools are required for accurate analysis.
 5. **Analysis passes** — work through the target systematically:
    - **Pass 1 — Recon**: headers, sections, imports, exports, strings, symbols
    - **Pass 2 — Decompilation**: decompile/disassemble key functions, entry

@@ -1,7 +1,7 @@
 ---
 name: reverse-engineer
 description: |
- Reverse engineering and binary analysis toolkit. Triggers when the user asks to "reverse engineer", "decompile", "disassemble", "deobfuscate", "analyze binary", "dump memory", "find offsets", "map structures", "extract strings", "analyze firmware", "unpack", "patch binary", "hook function", or wants to understand how a compiled program, game, app, or binary works internally. Also triggers when the user wants to build tools (ESP, aimbot, trainer, mod, hack, cheat engine table, DLL injection, memory scanner, overlay) based on reverse-engineered data, or when the user references a previously analyzed target.
+  Reverse engineering and binary analysis toolkit. Triggers when the user asks to "reverse engineer", "decompile", "disassemble", "deobfuscate", "analyze binary", "dump memory", "find offsets", "map structures", "extract strings", "analyze firmware", "unpack", "patch binary", "hook function", or wants to understand how a compiled program, game, app, or binary works internally. Also triggers when the user wants to build tools (ESP, aimbot, trainer, mod, hack, cheat engine table, DLL injection, memory scanner, overlay) based on reverse-engineered data, or when the user references a previously analyzed target.
 allowed-tools: Read, Write, Edit, Grep, Glob, Bash, Agent
 version: 1.0.0
 ---
@@ -36,12 +36,19 @@ section you need — never load the full map unless necessary.
 4. Analyze → save after each step with `append`
 5. For complex targets → delegate to the `re-analyst` agent
 
+## Tool Requirements
+
+After triage, check `tools_missing`. If any required tool is missing, ask the
+user to install it before continuing. Show the install command from
+`install_hints` and ask for confirmation. Do not use Python fallbacks — CLI
+tools are required for proper analysis. Run `tools` to see full install status.
+
 ## Rules
 
 - Use `triage` instead of running `file` + `strings` separately
 - Use `summary` + `search` before loading full sections
 - Pipe large tool output to stdin:
   `rizin -qc "..." <bin> | python ... set <target> functions -`
-- Ask once to install missing tools, then use fallbacks
+- Never skip a missing tool silently — always prompt the user to install it
 - Output structs in C format with hex offsets
 - Save patches to `notes` with address, original bytes, patched bytes
