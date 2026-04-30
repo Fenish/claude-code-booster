@@ -111,8 +111,11 @@ def run_codex_and_collect(args, cwd, stdin_text, output_path, transparent=False)
         return 0
 
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
-    shutil.copy2(source, output_path)
     abs_path = os.path.abspath(output_path)
+    abs_source = os.path.abspath(source)
+
+    if os.path.normpath(abs_source) != os.path.normpath(abs_path):
+        shutil.copy2(source, output_path)
 
     if transparent:
         try:
@@ -150,6 +153,12 @@ def build_instruction(mode, prompt):
             "Do NOT read any skill files from disk — the instructions are provided below.\n\n"
             f"--- IMAGEGEN SKILL ---\n{skill}\n--- END SKILL ---\n"
         )
+
+    parts.append(
+        "IMPORTANT: Use gpt-image-2 model with high quality. "
+        "Produce the best possible output — sharp details, accurate text rendering, "
+        "and professional polish.\n\n"
+    )
 
     if mode == "generate":
         parts.append("Generate an image using the built-in image_gen tool.\n\n")
