@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/plugins-0-7C3AED?style=flat-square" alt="Plugins" />
-  <img src="https://img.shields.io/badge/hooks-0-7C3AED?style=flat-square" alt="Hooks" />
+  <img src="https://img.shields.io/badge/plugins-2-7C3AED?style=flat-square" alt="Plugins" />
+  <img src="https://img.shields.io/badge/hooks-1-7C3AED?style=flat-square" alt="Hooks" />
   <img src="https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/github/license/Fenish/claude-code-booster?style=flat-square&color=green" alt="License" />
 </p>
@@ -32,6 +32,7 @@ Then pick what you need from `/plugin > Discover`.
 ## Plugin Categories
 
 <!-- TOC:START -->
+<img src="https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons/productivity.svg" width="14" height="14" /> [Productivity](#productivity) (2)<br>
 <!-- TOC:END -->
 
 ---
@@ -39,6 +40,10 @@ Then pick what you need from `/plugin > Discover`.
 ## Plugins
 
 <!-- PLUGINS:START -->
+### <img src="https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons/productivity.svg" width="16" height="16" /> Productivity
+
+- **[find-skills](./plugins/find-skills)** — Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.
+- **[cc-booster-linter](./plugins/linter)** — Auto-formats files after every edit using the right linter for each language.
 <!-- PLUGINS:END -->
 
 ---
