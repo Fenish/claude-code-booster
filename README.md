@@ -29,6 +29,8 @@ Then pick what you need from `/plugin > Discover`.
 
 ---
 
-<p align="center">
-  <a href="https://github.com/Fenish">fenish</a>
-</p>
+## Contributors
+
+<a href="https://github.com/Fenish/claude-code-booster/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Fenish/claude-code-booster" />
+</a>
