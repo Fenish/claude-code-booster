@@ -42,17 +42,18 @@ def scan_plugin(source_dir: Path, category: str, source_rel: str) -> dict | None
 
 
 def build_toc(categories: dict[str, list[dict]]) -> str:
-    lines = []
+    lines = ["<!-- prettier-ignore-start -->"]
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
         icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="14" height="14" align="absmiddle" />'
         count = len(categories[cat_key])
         lines.append(f'<a href="#{cat_key}">{icon} {label}</a> ({count})<br>')
+    lines.append("<!-- prettier-ignore-end -->")
     return "\n".join(lines)
 
 
 def build_plugins(categories: dict[str, list[dict]]) -> str:
-    lines = []
+    lines = ["<!-- prettier-ignore-start -->"]
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
         icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="16" height="16" align="absmiddle" />'
@@ -61,6 +62,7 @@ def build_plugins(categories: dict[str, list[dict]]) -> str:
         for p in categories[cat_key]:
             lines.append(f"- **[{p['name']}]({p['path']})** — {p['description']}")
         lines.append("")
+    lines.append("<!-- prettier-ignore-end -->")
     return "\n".join(lines).rstrip()
 
 

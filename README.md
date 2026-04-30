@@ -32,7 +32,9 @@ Then pick what you need from `/plugin > Discover`.
 ## Plugin Categories
 
 <!-- TOC:START -->
+<!-- prettier-ignore-start -->
 <a href="#productivity"><img src="https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons/productivity.svg" width="14" height="14" align="absmiddle" /> Productivity</a> (2)<br>
+<!-- prettier-ignore-end -->
 <!-- TOC:END -->
 
 ---
@@ -40,10 +42,13 @@ Then pick what you need from `/plugin > Discover`.
 ## Plugins
 
 <!-- PLUGINS:START -->
+<!-- prettier-ignore-start -->
 <h3 id="productivity"><img src="https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons/productivity.svg" width="16" height="16" align="absmiddle" /> Productivity</h3>
 
 - **[find-skills](./plugins/find-skills)** — Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.
 - **[cc-booster-linter](./plugins/linter)** — Auto-formats files after every edit using the right linter for each language.
+
+<!-- prettier-ignore-end -->
 <!-- PLUGINS:END -->
 
 ---
