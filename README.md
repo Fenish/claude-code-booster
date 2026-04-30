@@ -41,7 +41,7 @@ Then pick what you need from `/plugin > Discover`.
 ### ![Productivity](https://img.shields.io/badge/Productivity-7C3AED?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBvbHlnb24gcG9pbnRzPSIxMyAyIDMgMTQgMTIgMTQgMTEgMjIgMjEgMTAgMTIgMTAgMTMgMiIvPjwvc3ZnPg==&logoColor=white)
 
 - **[cc-booster-find-skills](./plugins/find-skills)** — Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.
-- **[cc-booster-linter](./plugins/linter)** — Auto-formats files after every edit using the right linter for each language.
+- **[linter](./plugins/linter)** — Auto-formats files after every edit using the right linter for each language.
 <!-- PLUGINS:END -->
 
 ---

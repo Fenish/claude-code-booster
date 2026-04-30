@@ -1,5 +1,5 @@
 {
-  "name": "cc-booster-linter",
+  "name": "linter",
   "description": "Auto-formats files after every edit using the right linter for each language.",
   "author": {
     "name": "fenish",
