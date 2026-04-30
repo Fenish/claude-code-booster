@@ -1,5 +1,5 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
   "name": "claude-code-booster",
   "description": "Curated plugins and skills to boost Claude Code productivity — skill discovery, security testing, and more",
   "owner": {
@@ -48,17 +48,14 @@
       "homepage": "https://github.com/Fenish/claude-code-booster"
     },
     {
-      "name": "codex-image",
-      "description": "Generate and edit images via Codex CLI's built-in imagegen skill. Slash commands for image creation and editing.",
+      "name": "codex-image-gen",
+      "description": "Generate and edit images using Codex CLI's built-in imagegen skill. Natural-language prompts for creation and editing.",
       "author": {
-        "name": "KingGyuSuh"
+        "name": "fenish"
       },
       "category": "productivity",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/KingGyuSuh/codex-image-in-cc.git"
-      },
-      "homepage": "https://github.com/KingGyuSuh/codex-image-in-cc"
+      "source": "./plugins/codex-image-gen",
+      "homepage": "https://github.com/Fenish/claude-code-booster"
     }
   ]
 }

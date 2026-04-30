@@ -1,0 +1,8 @@
+{
+  "name": "codex-image-gen",
+  "description": "Generate and edit images using Codex CLI's built-in imagegen skill. Natural-language prompts for creation and editing.",
+  "author": {
+    "name": "fenish",
+    "url": "https://github.com/Fenish"
+  }
+}
