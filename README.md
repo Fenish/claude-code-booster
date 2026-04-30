@@ -8,9 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/plugins-2-7C3AED?style=flat-square" alt="Plugins" />
-  <img src="https://img.shields.io/badge/hooks-1-7C3AED?style=flat-square" alt="Hooks" />
-  <img src="https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/github/license/Fenish/claude-code-booster?style=flat-square&color=green" alt="License" />
+  <img src="https://img.shields.io/github/license/Fenish/claude-code-booster?style=flat-square&color=orange" alt="License" />
 </p>
 
 <p align="center">
@@ -32,9 +30,7 @@ Then pick what you need from `/plugin > Discover`.
 ## Plugin Categories
 
 <!-- TOC:START -->
-<!-- prettier-ignore-start -->
-<a href="#productivity"><img src="https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons/productivity.svg" width="14" height="14" align="absmiddle" /> Productivity</a> (2)<br>
-<!-- prettier-ignore-end -->
+[![Productivity](https://img.shields.io/badge/Productivity-7C3AED?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBvbHlnb24gcG9pbnRzPSIxMyAyIDMgMTQgMTIgMTQgMTEgMjIgMjEgMTAgMTIgMTAgMTMgMiIvPjwvc3ZnPg==&logoColor=white)](#productivity)
 <!-- TOC:END -->
 
 ---
@@ -42,13 +38,10 @@ Then pick what you need from `/plugin > Discover`.
 ## Plugins
 
 <!-- PLUGINS:START -->
-<!-- prettier-ignore-start -->
-<h3 id="productivity"><img src="https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons/productivity.svg" width="16" height="16" align="absmiddle" /> Productivity</h3>
+### ![Productivity](https://img.shields.io/badge/Productivity-7C3AED?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBvbHlnb24gcG9pbnRzPSIxMyAyIDMgMTQgMTIgMTQgMTEgMjIgMjEgMTAgMTIgMTAgMTMgMiIvPjwvc3ZnPg==&logoColor=white)
 
 - **[find-skills](./plugins/find-skills)** — Search and discover agent skills from skills.sh and skillfish registries. Interactive selection and one-click install.
 - **[cc-booster-linter](./plugins/linter)** — Auto-formats files after every edit using the right linter for each language.
-
-<!-- prettier-ignore-end -->
 <!-- PLUGINS:END -->
 
 ---

@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 """Reads marketplace.json + plugin dirs, generates categorized plugin list in README.md."""
 
+import base64
 import json
 import re
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
 README = ROOT / "README.md"
+ICONS_DIR = ROOT / ".github" / "assets" / "icons"
 
 PLUGINS_START = "<!-- PLUGINS:START -->"
 PLUGINS_END = "<!-- PLUGINS:END -->"
 TOC_START = "<!-- TOC:START -->"
 TOC_END = "<!-- TOC:END -->"
-
-ICON_BASE = "https://raw.githubusercontent.com/Fenish/claude-code-booster/main/.github/assets/icons"
 
 CATEGORY_LABELS = {
     "productivity": "Productivity",
@@ -26,13 +27,21 @@ CATEGORY_LABELS = {
 }
 
 
+def icon_badge(cat_key: str, label: str) -> str:
+    svg_path = ICONS_DIR / f"{cat_key}.svg"
+    if not svg_path.exists():
+        return f"![{label}](https://img.shields.io/badge/-{quote(label)}-7C3AED?style=flat-square)"
+    svg = svg_path.read_text(encoding="utf-8").strip()
+    svg = svg.replace('stroke="#7C3AED"', 'stroke="white"')
+    b64 = base64.b64encode(svg.encode()).decode()
+    return f"![{label}](https://img.shields.io/badge/{quote(label)}-7C3AED?style=flat-square&logo=data:image/svg%2bxml;base64,{b64}&logoColor=white)"
+
+
 def scan_plugin(source_dir: Path, category: str, source_rel: str) -> dict | None:
     plugin_json = source_dir / ".claude-plugin" / "plugin.json"
     if not plugin_json.exists():
         return None
-
     meta = json.loads(plugin_json.read_text(encoding="utf-8"))
-
     return {
         "name": meta.get("name", source_dir.name),
         "description": meta.get("description", ""),
@@ -42,27 +51,24 @@ def scan_plugin(source_dir: Path, category: str, source_rel: str) -> dict | None
 
 
 def build_toc(categories: dict[str, list[dict]]) -> str:
-    lines = ["<!-- prettier-ignore-start -->"]
+    parts = []
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
-        icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="14" height="14" align="absmiddle" />'
-        count = len(categories[cat_key])
-        lines.append(f'<a href="#{cat_key}">{icon} {label}</a> ({count})<br>')
-    lines.append("<!-- prettier-ignore-end -->")
-    return "\n".join(lines)
+        badge = icon_badge(cat_key, label)
+        parts.append(f"[{badge}](#{cat_key})")
+    return " ".join(parts)
 
 
 def build_plugins(categories: dict[str, list[dict]]) -> str:
-    lines = ["<!-- prettier-ignore-start -->"]
+    lines = []
     for cat_key in sorted(categories.keys()):
         label = CATEGORY_LABELS.get(cat_key, cat_key.title())
-        icon = f'<img src="{ICON_BASE}/{cat_key}.svg" width="16" height="16" align="absmiddle" />'
-        lines.append(f'<h3 id="{cat_key}">{icon} {label}</h3>')
+        badge = icon_badge(cat_key, label)
+        lines.append(f"### {badge}")
         lines.append("")
         for p in categories[cat_key]:
             lines.append(f"- **[{p['name']}]({p['path']})** — {p['description']}")
         lines.append("")
-    lines.append("<!-- prettier-ignore-end -->")
     return "\n".join(lines).rstrip()
 
 
