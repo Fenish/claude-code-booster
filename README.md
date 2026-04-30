@@ -9,7 +9,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/plugins-2-7C3AED?style=flat-square" alt="Plugins" />
   <img src="https://img.shields.io/badge/hooks-1-7C3AED?style=flat-square" alt="Hooks" />
-  <img src="https://img.shields.io/badge/python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/github/license/Fenish/claude-code-booster?style=flat-square&color=green" alt="License" />
 </p>
 
