@@ -46,6 +46,17 @@ Then pick what you need from `/plugin > Discover`.
 
 ---
 
+## External Skills
+
+_These skills are curated from external sources for easy access. They are not
+created or maintained by this project — original source links are provided in
+each skill file._
+
+- **[penetration-tester](./external_skills/skills/penetration-tester)** —
+  Automated penetration testing for web applications
+
+---
+
 ## Contributing
 
 Contributions are welcome. Fork the repo, create a branch, and open a PR. Each
