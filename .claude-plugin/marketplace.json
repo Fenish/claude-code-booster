@@ -26,6 +26,16 @@
       "category": "productivity",
       "source": "./plugins/linter",
       "homepage": "https://github.com/Fenish/claude-code-booster"
+    },
+    {
+      "name": "penetration-tester",
+      "description": "Automated penetration testing for web applications. Identifies OWASP Top 10 vulnerabilities and suggests remediation.",
+      "author": {
+        "name": "fenish"
+      },
+      "category": "security",
+      "source": "./plugins/penetration-tester",
+      "homepage": "https://github.com/Fenish/claude-code-booster"
     }
   ]
 }

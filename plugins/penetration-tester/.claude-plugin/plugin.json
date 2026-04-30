@@ -1,0 +1,9 @@
+{
+  "name": "penetration-tester",
+  "description": "Automated penetration testing for web applications. Identifies OWASP Top 10 vulnerabilities and suggests remediation.",
+  "author": {
+    "name": "fenish",
+    "url": "https://github.com/fenish",
+    "source": "https://mcpmarket.com/tools/skills/security-penetration-tester"
+  }
+}
