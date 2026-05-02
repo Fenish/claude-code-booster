@@ -56,6 +56,16 @@
       "category": "productivity",
       "source": "./plugins/codex-image-gen",
       "homepage": "https://github.com/Fenish/claude-code-booster"
+    },
+    {
+      "name": "frontend-roadmap",
+      "description": "Guided frontend project preparation — collects requirements, references, design platform output, and tech stack choices into a comprehensive roadmap.md plan.",
+      "author": {
+        "name": "fenish"
+      },
+      "category": "productivity",
+      "source": "./plugins/frontend-roadmap",
+      "homepage": "https://github.com/Fenish/claude-code-booster"
     }
   ]
 }

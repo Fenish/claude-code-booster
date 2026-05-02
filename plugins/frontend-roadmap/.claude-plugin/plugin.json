@@ -1,0 +1,8 @@
+{
+  "name": "frontend-roadmap",
+  "description": "Guided frontend project preparation — collects requirements, references, design platform output, and tech stack choices into a comprehensive roadmap.md for a frontend developer agent.",
+  "author": {
+    "name": "fenish",
+    "url": "https://github.com/Fenish"
+  }
+}
